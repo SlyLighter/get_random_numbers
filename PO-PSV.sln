@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.35706.149
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PO-PSV", "GetRandomNumbers1\PO-PSV.csproj", "{364A4C3B-29B7-43A6-8D74-14E21048D4EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{364A4C3B-29B7-43A6-8D74-14E21048D4EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{364A4C3B-29B7-43A6-8D74-14E21048D4EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{364A4C3B-29B7-43A6-8D74-14E21048D4EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{364A4C3B-29B7-43A6-8D74-14E21048D4EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FA05052D-5506-48B3-93EC-49B291194D01}
+	EndGlobalSection
+EndGlobal
