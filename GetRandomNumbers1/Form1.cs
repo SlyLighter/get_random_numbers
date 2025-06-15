@@ -397,7 +397,7 @@ namespace GetRandomNumbers1
         // методы генерации случайных величин
 
         // вычисление чисел по пуассоновскому распределению
-        private int GeneratePuasson(double lambda)
+        private int GeneratePuasson(double lambda) // где lambda - интенсивность
         {
             double L = Math.Exp(-lambda);
             double p = 1.0;
