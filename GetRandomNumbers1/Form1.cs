@@ -20,7 +20,6 @@ namespace GetRandomNumbers1
             comboBox1.SelectedIndex = -1;
             chart1.Series.Clear();
 
-            // выключение кнопки Сгенерировать при запуске (пока не выбран закон распределения)
             generateButton.Enabled = false;
 
             textBoxLowerLimit.Tag = "allowMinus";
@@ -44,7 +43,7 @@ namespace GetRandomNumbers1
         // обработчик нажатия на кнопку Сгенерировать
         private void generateButton_Click(object sender, EventArgs e)
         {
-            // проверка на количество элементов
+            // проверка на количество элементов (если с помощью копирования и вставки попадёт неккоректное значение)
             if (!int.TryParse(textBoxCount.Text, out int count) || count <= 0)
             {
                 MessageBox.Show(
@@ -120,7 +119,7 @@ namespace GetRandomNumbers1
                 }
 
                 // вывод значений в текстовое поле
-                textBoxOutput.Text = string.Join("  ", values.Select(v => v.ToString("F2"))); // добавление к строке, преобразование в текст
+                textBoxOutput.Text = string.Join("  ", values.Select(v => v.ToString("F2"))); // преобразование каждого значения в строку и объединение
 
                 // построение частотной диаграммы
                 chart1.Series.Clear();
@@ -150,7 +149,7 @@ namespace GetRandomNumbers1
                     }
                 }
 
-                // проверка на максимальное количество попаданий и задание шага отображения значений и сетки
+                // задание шага отображения значений и сетки
                 int maxFrequency = frequencies.Max();
                 if (maxFrequency > 1000)
                 {
@@ -370,22 +369,14 @@ namespace GetRandomNumbers1
         // метод защиты ввода
         private void textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // преобразование sender в TeextBox, чтобы 
-            TextBox tb = sender as TextBox;
+            TextBox tb = sender as TextBox; // преобразование объекта к типу TextBox
             string tag = tb.Tag?.ToString();
-
-            // добавление тега для допуска ввода минуса
-            bool allowMinis = tb.Tag != null && tag == "allowMinus";
-
-            // добавление тега для целых неотрицательных чисел
-            bool onlyIntPositive = tb.Tag != null && tag == "onlyIntPositive";
 
             // проверка вводимых значений
             if (!char.IsDigit(e.KeyChar) // проверка цифр
                 && e.KeyChar != '\b' // проверка backspace
-                && !(e.KeyChar == '-' 
+                && !(e.KeyChar == '-' // проверка минуса
                     && tb.SelectionStart == 0
-                    && tb.Tag != null
                     && tag == "allowMinus"
                     && !tb.Text.Contains("-")
                     && tag != "onlyIntPositive")
@@ -432,7 +423,7 @@ namespace GetRandomNumbers1
         }
 
         // вычисление чисел по нормальному распределению
-        private double GenerateNormal(double m, double sigma) // где m - мат ожидание, sigma - среднеквадратичное откронение
+        private double GenerateNormal(double m, double sigma) // где m - мат ожидание, sigma - среднеквадратичное отклонение
         {
             double rand1 = rnd.NextDouble();
             double rand2 = rnd.NextDouble();
